@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/app.py", 
+      "use": "@vercel/python", 
+      "config": { "maxLambdaSize": "15mb" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)", 
+      "dest": "backend/app.py" 
+    }
+  ],
+  "installCommand": "pip install -r requirements.txt --target=./.vercel/output/static/dist && npm install",
+  "installCommand": "pip install -r requirements.txt --target=./.vercel/output/dist/python && npm install"
+}
