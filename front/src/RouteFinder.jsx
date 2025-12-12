@@ -3,6 +3,8 @@ import { Container, Row, Col, Card, Form, Button, Alert, Collapse, Spinner } fro
 import { MapContainer, TileLayer, Marker, Polyline, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 
+//const api =  "https://e-ciclos-web.vercel.app/api";
+const api =  "http://127.0.0.1:5000/";
 // ----------------------------------------------------
 // 🛑 PARTE CRÍTICA: CORRECCIÓN DE ESTILOS DE LEAFLET 🛑
 // ----------------------------------------------------
@@ -73,7 +75,7 @@ const ClickHandler = ({ setSelection, selectionMode, setLoading, setStatusMessag
             const findNearestNodeAndSet = async (lat, lon) => {
                 try {
                     // Llamada al nuevo endpoint de Python
-                    const response = await fetch(`https://e-ciclos-web.vercel.app/api/click_node?lat=${lat}&lon=${lon}`);
+                    const response = await fetch(`${api}/click_node?lat=${lat}&lon=${lon}`);
                     const data = await response.json(); 
                     
                     if (data.error) {
@@ -157,7 +159,7 @@ export default function RouteFinder() {
         setStatusMessage(`Buscando ${type}: ${text}...`);
         
         try {
-            const response = await fetch(`https://e-ciclos-web.vercel.app/api/search_node?query=${encodeURIComponent(text)}`);
+            const response = await fetch(`${api}/search_node?query=${encodeURIComponent(text)}`);
             const data = await response.json();
             
             const { node_id, lat, lon, error } = data; 
@@ -196,7 +198,7 @@ export default function RouteFinder() {
         setRoutes({ dijkstra: null, astar: null, rawDijkstraIds: null, rawAstarIds: null });
 
         try {
-            const response = await fetch(`https://e-ciclos-web.vercel.app/api/calculate_route?origin=${origenId}&destination=${destinoId}`);
+            const response = await fetch(`${api}/calculate_route?origin=${origenId}&destination=${destinoId}`);
             const data = await response.json(); 
 
             const { dijkstra_coords, astar_coords, dijkstra_ids, astar_ids, error } = data;

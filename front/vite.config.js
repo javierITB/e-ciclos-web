@@ -8,7 +8,7 @@ export default defineConfig({
     // Configuración del proxy: Reenvía peticiones que empiecen por /api
     proxy: {
       '/api': {
-        target: API_URL, // Dirección de tu servidor Flask
+        target: "http://127.0.0.1:5000", // Dirección de tu servidor Flask
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), // Opcional: Remueve /api del path final de Flask
       },
