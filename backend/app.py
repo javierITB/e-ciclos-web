@@ -76,6 +76,9 @@ def get_node_coords(node_id: int) -> Optional[Tuple[float, float]]:
     return None
 
 # --- ENDPOINTS (API REST) ---
+@app.route('/', methods=['GET'])
+def index():
+    return "API REST para Ruteo en Grafo OSM - Backend Flask"
 
 @app.route('/search_node', methods=['GET'])
 def search_node():
