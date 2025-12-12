@@ -200,4 +200,3 @@ if __name__ == '__main__':
     # Flask correrá en el puerto 5000, que es el que Vite usará para el proxy.
     print("Iniciando servidor Flask en http://127.0.0.1:5000...")
     # app.run(debug=True, host='127.0.0.1', port=5000) #
-    app = app
