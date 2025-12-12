@@ -1,0 +1,15 @@
+/* leaflet_fix.css */
+
+/*
+¡CRÍTICO! Esta línea resuelve el problema de renderizado del mapa
+cuando se utiliza dentro de contenedores Flexbox/Grid o React-Bootstrap.
+Asegura que el contenedor de los tiles del mapa tenga una altura definida.
+*/
+.leaflet-container {
+    height: 100% !important; 
+    width: 100% !important;
+}
+
+/* Asegúrate de que la columna del mapa no tenga padding interno si quieres que el mapa 
+ocupe todo el espacio visible dentro de ella. (Ya lo tienes en p-0 en el Col de React)
+*/
